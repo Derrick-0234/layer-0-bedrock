@@ -7,7 +7,7 @@ def test_left_join_adds_right_fields_when_match():
 
     out, right_fields = left_join_by_email(left, right)
 
-    assert right_fields == ["plan"] or set(right_fields) == {"plan"}
+    assert set(right_fields) == {"plan"}
     assert out == [{"name": "Alice", "email": "alice@example.com", "plan": "pro"}]
 
 
@@ -28,3 +28,16 @@ def test_left_join_normalizes_email():
 
     assert out[0]["email"] == "bob@example.com"
     assert out[0]["plan"] == "free"
+
+
+def test_join_matches_messy_right_email():
+    # Arrange
+    left = [{"name": "Alice", "email": "alice@example.com"}]
+    right = [{"email": " ALICE@EXAMPLE.COM ", "plan": "pro"}]
+
+    # Act
+    out, _ = left_join_by_email(left, right)
+
+    # Assert
+    assert out[0]["plan"] == "pro"
+    assert out[0]["email"] == "alice@example.com"
