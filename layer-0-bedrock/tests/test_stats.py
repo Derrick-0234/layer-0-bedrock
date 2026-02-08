@@ -52,3 +52,15 @@ def test_ignores_not_a_number_and_keeps_good_score():
     assert out["min"] == 80.0
     assert out["max"] == 80.0
     assert out["mean"] == 80.0
+
+
+def test_mean_handles_decimals():
+    # Arrange
+    rows = [{"score": "70"}, {"score": "75"}]
+
+    # Act
+    out = summarize_scores(rows)
+
+    # Assert
+    assert out["count"] == 2
+    assert out["mean"] == 72.5
