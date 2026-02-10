@@ -1,2 +1,7 @@
 data/*output*.csv
 data/top_words.csv
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
