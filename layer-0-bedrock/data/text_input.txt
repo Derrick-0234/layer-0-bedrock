@@ -1,0 +1,2 @@
+RAG reliability is about tests, logs, and guardrails.
+Tests catch regressions. Logs show what happened. Guardrails prevent leaks.
