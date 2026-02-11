@@ -1,0 +1,4 @@
+2026-02-10 12:34:56 INFO user_id=123 action=login
+2026-02-10 12:35:10 WARN user_id=123 action=failed_password
+bad line that should be skipped
+2026-02-10 12:36:00 ERROR user_id=999 action=lockout
