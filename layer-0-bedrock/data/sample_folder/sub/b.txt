@@ -1,1 +1,4 @@
-worldpython -m src.script_folder_list_to_csv
+worldgit add .
+git commit -m 0.6: add folder lister script + test
+git status
+git push
