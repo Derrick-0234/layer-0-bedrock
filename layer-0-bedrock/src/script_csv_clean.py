@@ -1,31 +1,42 @@
+import argparse
 import csv
+import logging
 from pathlib import Path
 
 from src.transform import clean_rows
 
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+log = logging.getLogger(__name__)
 
-def main():
-    input_path = Path("data/input.csv")
-    output_path = Path("data/output.csv")
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser(description="Clean a CSV of name/email rows.")
+    p.add_argument("--input", default="data/input.csv", help="Input CSV path")
+    p.add_argument("--output", default="data/output.csv", help="Output CSV path")
+    return p.parse_args()
 
-    # Make sure the output folder exists
+def main() -> None:
+    args = parse_args()
+    input_path = Path(args.input)
+    output_path = Path(args.output)
+
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # Read input CSV into a list of dicts
     with input_path.open(newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
 
-    # Clean rows
     cleaned = clean_rows(rows)
 
-    # Write output CSV
     with output_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["name", "email"])
         writer.writeheader()
         writer.writerows(cleaned)
 
-    print("Done. Wrote", len(cleaned), "rows to", output_path)
-
+    dropped = len(rows) - len(cleaned)
+    log.info("input=%s", input_path)
+    log.info("output=%s", output_path)
+    log.info("rows_read=%d", len(rows))
+    log.info("rows_dropped=%d", dropped)
+    log.info("rows_written=%d", len(cleaned))
 
 if __name__ == "__main__":
     main()
