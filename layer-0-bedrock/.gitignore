@@ -5,3 +5,4 @@ data/top_words.csv
 __pycache__/
 *.py[cod]
 .pytest_cache/
+data/report*.md
