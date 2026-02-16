@@ -1,9 +1,13 @@
 from __future__ import annotations
 
 import csv
+import logging
 from pathlib import Path
 
 from src.log_parse import parse_log
+
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+log = logging.getLogger(__name__)
 
 DATA_DIR = Path("data")
 INPUT_PATH = DATA_DIR / "app.log"
@@ -20,7 +24,9 @@ def main() -> None:
         for r in rows:
             w.writerow([r.ts, r.level, r.message])
 
-    print(f"Done. parsed {len(rows)} rows → {OUTPUT_PATH}")
+    log.info("input=%s", INPUT_PATH)
+    log.info("output=%s", OUTPUT_PATH)
+    log.info("rows_written=%d", len(rows))
 
 if __name__ == "__main__":
     main()
