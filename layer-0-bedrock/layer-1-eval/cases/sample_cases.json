@@ -1,0 +1,5 @@
+[
+  {"id":"c1","question":"What is RAG?","expected_contains":["looks up","docs"],"tags":["basics"]},
+  {"id":"c2","question":"List the 3 parts of RAG.","expected_contains":["Docs","Search","Answer"],"tags":["basics"]},
+  {"id":"c3","question":"Name 2 RAG failure modes.","expected_contains":["hallucination","wrong doc"],"tags":["reliability"]}
+]

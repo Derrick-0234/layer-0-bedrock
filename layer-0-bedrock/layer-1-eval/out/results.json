@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "cases": 3,
+    "passed": 3,
+    "failed": 0,
+    "generated_at": "2026-02-20T22:52:28.325772+00:00"
+  },
+  "results": [
+    {
+      "id": "c1",
+      "question": "What is RAG?",
+      "answer": "RAG looks up company docs first, then answers.",
+      "pass": true,
+      "missing": [],
+      "tags": [
+        "basics"
+      ]
+    },
+    {
+      "id": "c2",
+      "question": "List the 3 parts of RAG.",
+      "answer": "Docs, Search, Answer.",
+      "pass": true,
+      "missing": [],
+      "tags": [
+        "basics"
+      ]
+    },
+    {
+      "id": "c3",
+      "question": "Name 2 RAG failure modes.",
+      "answer": "Wrong doc and hallucination.",
+      "pass": true,
+      "missing": [],
+      "tags": [
+        "reliability"
+      ]
+    }
+  ]
+}
