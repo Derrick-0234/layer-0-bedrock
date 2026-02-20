@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from layer-1-eval.run_eval import run
+from layer_1_eval.run_eval import run
 
 
 def test_eval_runner_deterministic(tmp_path: Path):
