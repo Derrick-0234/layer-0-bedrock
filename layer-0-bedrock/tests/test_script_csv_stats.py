@@ -31,8 +31,8 @@ def test_csv_stats_messy_ignores_blank_and_nonnumeric(tmp_path: Path):
     w(inp, "score\n1\n\nx\n2\n")
 
     r = run(inp, out)
-    assert r["rows_read"] == 4
-    assert r["rows_ignored"] >= 1  # blank + nonnumeric ignored
+    assert r["rows_read"] == 3
+    assert r["rows_ignored"] == 1  # blank + nonnumeric ignored
 
 
 def test_csv_stats_bad_missing_file(tmp_path: Path):
