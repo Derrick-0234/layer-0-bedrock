@@ -22,9 +22,12 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
-def load_json(path: Path) -> Any:
-    with path.open(encoding="utf-8") as f:
-        return json.load(f)
+def load_json(path: str):
+    with open(path, "r", encoding="utf-8") as f:
+        try:
+            return json.load(f)
+        except json.JSONDecodeError as e:
+            raise ValueError(f"Invalid JSON in {path}: {e.msg}") from None
 
 
 def infer_fields(rows: list[dict]) -> list[str]:
