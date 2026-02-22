@@ -11,6 +11,7 @@ def clean_json_rows(rows):
             else:
                 flat[k] = v
 
+        # allow name from either top-level name or flattened user_name
         name = str(flat.get("name") or flat.get("user_name") or "").strip()
         email = str(flat.get("email", "")).strip().lower()
         age = flat.get("age", "")
@@ -19,10 +20,10 @@ def clean_json_rows(rows):
         if not name or not email or "@" not in email:
             continue
 
+        # IMPORTANT: keep output schema stable (tests expect only these keys)
         cleaned.append(
             {
                 "name": name,
-                "user_name": str(flat.get("user_name", "")).strip(),
                 "email": email,
                 "age": age,
             }
