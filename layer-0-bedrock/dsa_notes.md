@@ -12,3 +12,8 @@ Patterns:
 - Hash map for "seen"
 - Stack for "match/close"
 - Two pointers for sorted arrays
+
+Patterns (Week 7)
+- Two pointers: sorted array / palindrome / remove duplicates
+- Sorting: sort then scan, or use sort for grouping
+- Recursion: base case + reduce problem size each call
